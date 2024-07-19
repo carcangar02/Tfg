@@ -1,0 +1,36 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+.carta{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 120px;
+    height: 150px;
+    background-size: cover;
+}
+.vida{
+    display: flex;
+    border: 1px solid wheat;
+    border-radius: 50%;
+    width: 20px;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.board{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+.section1{
+    border: 1px solid white;
+}
+.section2{
+    border: 1px solid rgb(112, 45, 45);
+}
+.section3{
+    border: 1px solid blue;
+}
