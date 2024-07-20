@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+}
 .carta{
     border: 2px solid white;
     border-radius: 10px;
@@ -23,14 +24,52 @@ html, body {
 .board{
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 0.5fr 3fr 0.5fr;
 }
 .section1{
+    display: flex;
     border: 1px solid white;
 }
 .section2{
+    display: flex;
     border: 1px solid rgb(112, 45, 45);
 }
 .section3{
+    display: flex;
     border: 1px solid blue;
 }
+.cartasPlyer{
+    display: flex;
+    border: 1px solid yellow;
+    margin-top: auto;
+    margin-left: 15vh;
+
+}
+.puntos{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border: 1px solid yellow; 
+    transform: rotate(45deg);
+    margin-left: 30px;
+}
+.pasarTurno{
+    width: 90px;
+    height: 30px;
+    border: 1px solid blue;
+    background-color: transparent;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    font-size: 10px;
+}
+.pasarTurno:hover{
+    transform: scale(1.1);
+}
+.iconosSection1{
+    margin-top: 35vh;
+
+}
+
