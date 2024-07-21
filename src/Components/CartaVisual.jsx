@@ -1,33 +1,23 @@
-import React from 'react'
-import {imagenes} from '../imagenes.js'
+import { imagenes } from "../imagenes.js";
+import {randomNumber} from "../Logic.js"
 
-const rutaIMG = imagenes[0].img
-const estiloFondo ={
-    backgroundImage : `url(${rutaIMG})`,
-}
+const { key, nombre, grupo, img, vida, efectos } = imagenes[randomNumber];
+const estiloFondo = {
+  backgroundImage: `url(${img})`,
+};
 
-
-export const CartaJuego = ()=>{
-
-  
-
-    return(
-    <div  className= "carta" style={estiloFondo}>
-        <div className="vida">
-        3
-        </div>
+export const CartaJuego = () => {
+  return (
+    <div className="carta" style={estiloFondo}>
+      <div className="vida">{vida}</div>
     </div>
-    )
-}
-export const CartaModalInfo = ()=>{
-
-return(
-   <div className="carta" style={estiloFondo}>
-     <div className="vida">
-        3
-     </div>
-    <p>textoInfo</p>
-   </div> 
-)
-
-}
+  );
+};
+export const CartaModalInfo = () => {
+  return (
+    <div className="carta" style={estiloFondo}>
+      <div className="vida">3</div>
+      <p>textoInfo</p>
+    </div>
+  );
+};
