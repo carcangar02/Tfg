@@ -16,7 +16,7 @@ export const CartaJuego = () => {
 export const CartaModalInfo = () => {
   return (
     <div className="carta" style={estiloFondo}>
-      <div className="vida">3</div>
+      <div className="vida">{vida}</div>
       <p>textoInfo</p>
     </div>
   );
