@@ -4,7 +4,7 @@ import {randomNumber,min,max} from "../Logic.js"
 
 export const CartaJuego = () => {
   
-const { key,img,vida,} = imagenes[randomNumber(min,max)];
+const { key,img,vida,} = imagenes[randomNumber(min,max)]; 
 
 const estiloFondo = {
   backgroundImage: `url(${img})`,
