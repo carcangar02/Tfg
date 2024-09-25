@@ -1,9 +1,7 @@
-function getRandomInt(min, max) {
+export function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+export const min = 0;
+export const max = 17;
 
-// Ejemplo de uso
-const min = 0;
-const max = 17;
-export const randomNumber = getRandomInt(min, max);
 
