@@ -1,5 +1,6 @@
 import "./App.css";
 import { CartaJuego, CartaModalInfo,  } from "./Components/CartaVisual.jsx";
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 
@@ -14,13 +15,15 @@ function App() {
         </div>
       </section>
       <section className="section2">
-        <div className="cartasJugadasAdv"></div>
-        <div className="cartasJugadasPlyer"></div>
-        <div className="cartasPlyer">
-          <CartaJuego />
-          <CartaJuego />
-          <CartaJuego />
-        </div>
+        <DragDropContext>
+          <div className="cartasJugadasAdv"></div>
+          <div className="cartasJugadasPlyer"></div>
+          <div className="cartasPlyer">
+            <CartaJuego/>
+            <CartaJuego/>
+            <CartaJuego/>
+          </div>
+        </DragDropContext>
       </section>
       <section className="section3">
         <div className="iconosSection3">

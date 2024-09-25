@@ -24,7 +24,7 @@ export const imagenes = [
     grupo: "Lord of Mysteries",
     img: Clown,
     vida: 4,
-    efectos: "Por cada turno +1 a su lado si son {Lord of mysteries}",
+    efectos: "Por cada turno +1 de vida a las cartas jugadas si son {Lord of mysteries}",
   },
   {
     key: "1",
@@ -32,7 +32,7 @@ export const imagenes = [
     grupo: "Lord of Mysteries",
     img: Seer,
     vida: 1,
-    efectos: "Inflinge 2 de daño a una carta enemiga",
+    efectos: "Inflinge 2 a la carta enemiga con mas vida",
   },
 
   {
@@ -58,7 +58,7 @@ export const imagenes = [
     grupo: "Lord of Mysteries",
     img: Trickmaster,
     vida: 2,
-    efectos: "Todos los {God Allmighty} enemigos -1",
+    efectos: "Todos los {God Allmighty} enemigos -1 de vida",
   },
   {
     key: "5",
@@ -74,7 +74,7 @@ export const imagenes = [
     grupo: "God Allmighty",
     img: Telepathist,
     vida: 2,
-    efectos: "Por cada {Spectator} hace 1 de daño a un a carta enemiga",
+    efectos: "Por cada {Spectator} hace 1 de daño a un a carta enemiga aleatoria",
   },
   {
     key: "7",
@@ -130,7 +130,7 @@ export const imagenes = [
     grupo: "God Allmighty",
     img: Reader,
     vida: 2,
-    efectos: "Hace 1 de daño por turno al mismo enemigo",
+    efectos: "Hace 1 de daño por turno al enemigo con menos vida",
   },
   {
     key: "14",
@@ -146,7 +146,7 @@ export const imagenes = [
     grupo: "God Allmighty",
     img: Secrets_Supplicant,
     vida: 2,
-    efectos: "Si hay un {The Anarchy}, vida +2",
+    efectos: "Si hay un {The Anarchy} enemigo, vida +2",
   },
   {
     key: "16",
@@ -154,7 +154,7 @@ export const imagenes = [
     grupo: "The Anarchy",
     img: Lawyer,
     vida: 1,
-    efectos: "Intercambia su vida con la de un enemigo",
+    efectos: "Intercambia su vida con la de un enemigo aleatorio",
   },
   {
     key: "17",
@@ -162,6 +162,6 @@ export const imagenes = [
     grupo: "The Anarchy",
     img: Arbitrer,
     vida: 3,
-    efectos: "Hace daño equivalente a la vida de un enemigo al azar",
+    efectos: "Hace daño equivalente a la vida de una carta enemiga jugada a otra carta enemiga al azar",
   },
 ];
