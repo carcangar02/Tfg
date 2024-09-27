@@ -1,10 +1,38 @@
 import "./App.css";
-import { CartaJuego, CartaModalInfo,  } from "./Components/CartaVisual.jsx";
-import { DragDropContext } from 'react-beautiful-dnd';
-
-
+import { useState } from "react";
+import {CartaModalInfo,cartasDisplay,cartasDisplayJugadas} from "./Components/CartaVisual.jsx";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
+  const [displayJugadas,setDisplayjugadas] = useState(cartasDisplayJugadas)
+  const [display, setDisplay] = useState(cartasDisplay);
+  const handleDragDrop =(results)=>{
+    
+    const {source, destination} = results;
+
+    if(!destination) return;
+
+    if(source.droppableId === destination.droppableId && source.index === destination.index) return;
+
+    if(source.droppableId===destination.droppableId && source.index!=destination.index){
+      const reorderDisplay = [...display];
+      const sourceIndex = source.index;
+      const destinationIndex = destination.index;
+      const [removedDisplay] = reorderDisplay.splice(sourceIndex, 1);
+      reorderDisplay.splice(destinationIndex, 0, removedDisplay);
+      return setDisplay(reorderDisplay)
+    }
+    if(source.droppableId!=destination.droppableId){
+      const reorderDisplayBoard = [...display]
+      const reorderJugadasBoard = [...displayJugadas]
+      const sourceIndexBoard = source.index;
+      const destinationIndexBoard = destination.index;
+      const [removedDisplayBoard]= reorderDisplayBoard.splice(sourceIndexBoard,1)
+      reorderJugadasBoard.splice(destinationIndexBoard,0,removedDisplayBoard)
+      return setDisplayjugadas(reorderJugadasBoard),setDisplay(reorderDisplayBoard)
+    }
+  };
+  
   return (
     <main className="board">
       <section className="section1">
@@ -15,14 +43,47 @@ function App() {
         </div>
       </section>
       <section className="section2">
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleDragDrop}>
           <div className="cartasJugadasAdv"></div>
-          <div className="cartasJugadasPlyer"></div>
-          <div className="cartasPlyer">
-            <CartaJuego/>
-            <CartaJuego/>
-            <CartaJuego/>
-          </div>
+          <Droppable droppableId="destino" type="group" direction="horizontal">
+
+            {(provided) => (
+
+              <div className="cartasJugadasPlyer"{...provided.droppableProps}ref={provided.innerRef}>
+
+                {displayJugadas.map((cartaJugada,index)=>(<Draggable draggableId={cartaJugada.id} key={cartaJugada.id} index={index}>
+
+                  {(provided)=>(
+                    <div className="agarra" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+
+                      {cartaJugada.contenido}
+
+                  </div>)}
+            </Draggable>))}
+            </div>
+            )}
+          </Droppable>
+          <Droppable droppableId="origen" type="group" direction="horizontal">
+
+            {(provided) => (
+              <div className="cartasPlyer" {...provided.droppableProps}
+              ref={provided.innerRef}>
+
+                {display.map((carta,index) => (
+                  <Draggable draggableId={carta.id} key={carta.id} index={index}>
+                      {(provided)=>(
+                        <div className="agarra" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+
+                         {carta.contenido}
+
+                        </div>)}
+                  </Draggable>
+                ))}
+
+              </div>
+            )}
+
+          </Droppable>
         </DragDropContext>
       </section>
       <section className="section3">

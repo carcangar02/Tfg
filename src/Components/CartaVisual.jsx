@@ -14,6 +14,10 @@ export const CartaJuego = () => {
     </div>
   );
 };
+
+
+
+
 export const CartaModalInfo = () => {
   const { key, nombre, grupo, img, vida, efectos } =
     imagenes[randomNumber(min, max)];
@@ -33,3 +37,32 @@ export const CartaModalInfo = () => {
     </div>
   );
 };
+
+
+
+export const cartasDisplay = [
+  {
+    id: "1",
+    contenido: <CartaJuego />,
+  },
+  {
+    id: "2",
+    contenido: <CartaJuego />,
+  },
+  {
+    id: "3",
+    contenido: <CartaJuego />,
+  },
+];
+
+export const cartasDisplayJugadas = [
+  {
+   
+  },
+  { 
+    
+  },
+  {
+    
+  },
+];
