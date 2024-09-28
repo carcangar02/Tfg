@@ -1,14 +1,23 @@
 import "./App.css";
-import { useState } from "react";
-import {CartaModalInfo,cartasDisplay,cartasDisplayJugadas} from "./Components/CartaVisual.jsx";
+import { useEffect, useState } from "react";
+import {CartaModalInfo,cartasDisplay,cartasDisplayJugadas, CartaJuegoJugada} from "./Components/CartaVisual.jsx";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
-  const [displayJugadas,setDisplayjugadas] = useState(cartasDisplayJugadas)
+  const [displayJugadas,setDisplayjugadas] = useState(cartasDisplayJugadas);
   const [display, setDisplay] = useState(cartasDisplay);
-  const handleDragDrop =(results)=>{
-    
+  const [idList,setIdList] = useState(undefined);
+  useEffect(()=>{
+    const divSelector = document.querySelectorAll(".carta");
+    const divSelectorCopia = [...divSelector].map(div=>div.id);
+    setIdList(divSelectorCopia)
+  },[]);
+  
+  const handleDragDrop = (results) =>{
+  
     const {source, destination} = results;
+    
+
 
     if(!destination) return;
 
@@ -27,8 +36,22 @@ function App() {
       const reorderJugadasBoard = [...displayJugadas]
       const sourceIndexBoard = source.index;
       const destinationIndexBoard = destination.index;
-      const [removedDisplayBoard]= reorderDisplayBoard.splice(sourceIndexBoard,1)
-      reorderJugadasBoard.splice(destinationIndexBoard,0,removedDisplayBoard)
+      const copiaIndex = source.index
+     
+      const indiceFinal = idList[copiaIndex]//llega hasta aqui
+      console.log(indiceFinal)
+      const constructoCarta = [
+        {
+          id:destination.index,
+          contenido: <CartaJuegoJugada indicesCartaDisplayDragged={indiceFinal}/>
+        }
+      ]
+      reorderDisplayBoard.splice(sourceIndexBoard,1)
+      reorderJugadasBoard.splice(destinationIndexBoard,0,constructoCarta)
+      
+
+
+
       return setDisplayjugadas(reorderJugadasBoard),setDisplay(reorderDisplayBoard)
     }
   };
@@ -51,16 +74,17 @@ function App() {
 
               <div className="cartasJugadasPlyer"{...provided.droppableProps}ref={provided.innerRef}>
 
-                {displayJugadas.map((cartaJugada,index)=>(<Draggable draggableId={cartaJugada.id} key={cartaJugada.id} index={index}>
+                {displayJugadas.map((cartaJugada,index)=>(
+                  <Draggable draggableId={cartaJugada.id} key={cartaJugada.id} index={index}>
 
                   {(provided)=>(
                     <div className="agarra" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
 
                       {cartaJugada.contenido}
 
-                  </div>)}
-            </Draggable>))}
-            </div>
+                   </div>)}
+                 </Draggable>))}
+              </div>
             )}
           </Droppable>
           <Droppable droppableId="origen" type="group" direction="horizontal">

@@ -1,15 +1,33 @@
 import { imagenes } from "../imagenes.js";
 import { randomNumber, min, max } from "../Logic.js";
 
+
+
+
 export const CartaJuego = () => {
-  const { key, nombre, grupo, img, vida, efectos } = imagenes[randomNumber(min, max)];
+  const indiceImagenes = randomNumber(min, max)
+  const { key, nombre, grupo, img, vida, efectos } = imagenes[indiceImagenes];
 
   const estiloFondo = {
     backgroundImage: `url(${img})`,
   };
 
   return (
-    <div key={key} className="carta" style={estiloFondo}>
+    <div id={key} key={key} className="carta" style={estiloFondo}>
+      <div className="vida">{vida}</div>
+    </div>
+  );
+};
+export const CartaJuegoJugada = (indicesCartaDisplayDragged) => {
+  const indiceImagenes = {indicesCartaDisplayDragged}
+  const { key, nombre, grupo, img, vida, efectos } = imagenes[indiceImagenes];
+
+  const estiloFondo = {
+    backgroundImage: `url(${img})`,
+  };
+
+  return (
+    <div id={key} key={key} className="carta" style={estiloFondo}>
       <div className="vida">{vida}</div>
     </div>
   );
@@ -18,16 +36,18 @@ export const CartaJuego = () => {
 
 
 
+
 export const CartaModalInfo = () => {
-  const { key, nombre, grupo, img, vida, efectos } =
-    imagenes[randomNumber(min, max)];
+  const indiceImagenes = randomNumber(min, max)
+  const { key, nombre, grupo, img, vida, efectos } = imagenes[indiceImagenes];
+
 
   const estiloFondo = {
     backgroundImage: `url(${img})`,
   };
 
   return (
-    <div key={key} className="carta" style={estiloFondo}>
+    <div id={key} key={key} className="carta" style={estiloFondo}>
       <div className="vida">{vida}</div>
       <div className="info">
         <p>{nombre}</p>
@@ -42,6 +62,10 @@ export const CartaModalInfo = () => {
 
 export const cartasDisplay = [
   {
+    id: "0",
+    contenido: <CartaJuego />,
+  },
+  {
     id: "1",
     contenido: <CartaJuego />,
   },
@@ -49,20 +73,17 @@ export const cartasDisplay = [
     id: "2",
     contenido: <CartaJuego />,
   },
-  {
-    id: "3",
-    contenido: <CartaJuego />,
-  },
 ];
 
 export const cartasDisplayJugadas = [
   {
+   id: "0"
    
   },
   { 
-    
+   id: "1" 
   },
   {
-    
+   id: "2"
   },
 ];
