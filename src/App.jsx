@@ -37,11 +37,12 @@ function App() {
       const sourceIndexBoard = source.index;
       const destinationIndexBoard = destination.index;
       const copiaIndex = source.index
+      const destinationIndexBoardToStr = destinationIndexBoard.toString()
      
-      const indiceFinal = idList[copiaIndex]//llega hasta aqui
+      const indiceFinal = idList[copiaIndex]
       const constructoCarta = [
         {
-          id:destination.index,
+          id:destinationIndexBoardToStr,
           contenido: <CartaJuegoJugada indicesCartaDisplayDragged={indiceFinal}/>
         }
       ]

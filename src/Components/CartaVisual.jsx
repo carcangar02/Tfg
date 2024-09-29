@@ -77,13 +77,15 @@ export const cartasDisplay = [
 
 export const cartasDisplayJugadas = [
   {
-   id: "0"
-   
+   id: "0",
+   contenido:null,
   },
   { 
-   id: "1" 
+   id: "1" ,
+   contenido:null,
   },
   {
-   id: "2"
+   id: "2",
+   contenido:null,
   },
 ];
