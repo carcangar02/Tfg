@@ -51,15 +51,11 @@ function App() {
 
               <div className="cartasJugadasPlyer"{...provided.droppableProps}ref={provided.innerRef}>
 
-                {displayJugadas.map((cartaJugada,index)=>(<Draggable draggableId={cartaJugada.id} key={cartaJugada.id} index={index}>
-
-                  {(provided)=>(
-                    <div className="agarra" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-
-                      {cartaJugada.contenido}
-
-                  </div>)}
-            </Draggable>))}
+                {displayJugadas.map((cartaJugada)=>(
+                  <div>
+                    {cartaJugada.contenido}
+                  </div>))}
+                  
             </div>
             )}
           </Droppable>
