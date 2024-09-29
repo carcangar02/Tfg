@@ -39,9 +39,6 @@ function App() {
       const copiaIndex = source.index
      
       const indiceFinal = idList[copiaIndex]//llega hasta aqui
-      console.log(idList)
-      console.log(copiaIndex)
-      console.log(indiceFinal)
       const constructoCarta = [
         {
           id:destination.index,
