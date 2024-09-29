@@ -11,7 +11,7 @@ function App() {
     const divSelector = document.querySelectorAll(".carta");
     const divSelectorCopia = [...divSelector].map(div=>div.id);
     setIdList(divSelectorCopia)
-  },[]);
+  },[display]);
   
   const handleDragDrop = (results) =>{
   
@@ -39,6 +39,8 @@ function App() {
       const copiaIndex = source.index
      
       const indiceFinal = idList[copiaIndex]//llega hasta aqui
+      console.log(idList)
+      console.log(copiaIndex)
       console.log(indiceFinal)
       const constructoCarta = [
         {
@@ -74,17 +76,12 @@ function App() {
 
               <div className="cartasJugadasPlyer"{...provided.droppableProps}ref={provided.innerRef}>
 
-                {displayJugadas.map((cartaJugada,index)=>(
-                  <Draggable draggableId={cartaJugada.id} key={cartaJugada.id} index={index}>
-
-                  {(provided)=>(
-                    <div className="agarra" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-
-                      {cartaJugada.contenido}
-
-                   </div>)}
-                 </Draggable>))}
-              </div>
+                {displayJugadas.map((cartaJugada)=>(
+                  <div>
+                    {cartaJugada.contenido}
+                  </div>))}
+                  
+            </div>
             )}
           </Droppable>
           <Droppable droppableId="origen" type="group" direction="horizontal">
